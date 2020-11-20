@@ -9,6 +9,7 @@
 package kotlinx.datetime
 
 import kotlinx.cinterop.*
+import kotlinx.serialization.Serializable
 import platform.posix.*
 import kotlin.math.*
 import kotlin.time.*
@@ -83,6 +84,7 @@ private const val MAX_SECOND = 31494816403199L // +1000000-12-31T23:59:59
 
 private fun isValidInstantSecond(second: Long) = second >= MIN_SECOND && second <= MAX_SECOND
 
+@Serializable
 @OptIn(ExperimentalTime::class)
 public actual class Instant internal constructor(actual val epochSeconds: Long, actual val nanosecondsOfSecond: Int) : Comparable<Instant> {
 
