@@ -14,7 +14,6 @@ import platform.posix.*
 import kotlin.math.*
 import kotlin.time.*
 
-@Serializable
 public actual enum class DayOfWeek {
     MONDAY,
     TUESDAY,

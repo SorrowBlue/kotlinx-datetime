@@ -10,6 +10,7 @@ package kotlinx.datetime
 
 import kotlin.math.abs
 import kotlinx.cinterop.*
+import kotlinx.serialization.Serializable
 import platform.posix.*
 import kotlin.native.concurrent.*
 
@@ -24,6 +25,7 @@ internal expect fun offset_at_instant(zone: kotlinx.datetime.TZID /* = kotlin.UL
 internal expect fun timezone_by_name(zone_name: kotlin.String?): kotlinx.datetime.TZID /* = kotlin.ULong */
 internal expect fun current_time(sec: kotlinx.cinterop.CValuesRef<platform.posix.int64_tVar /* = kotlinx.cinterop.LongVarOf<kotlin.Long> */>?, nano: kotlinx.cinterop.CValuesRef<platform.posix.int32_tVar>?): kotlin.Boolean
 
+@Serializable(with = TimeZoneSerializer::class)
 public actual open class TimeZone internal constructor(private val tzid: TZID, actual val id: String) {
 
     actual companion object {
@@ -144,6 +146,7 @@ public actual open class TimeZone internal constructor(private val tzid: TZID, a
 @ThreadLocal
 private var zoneOffsetCache: MutableMap<Int, ZoneOffset> = mutableMapOf()
 
+@Serializable(with = ZoneOffsetSerializer::class)
 public actual class ZoneOffset internal constructor(actual val totalSeconds: Int, id: String) : TimeZone(TZID_INVALID, id) {
 
     companion object {
