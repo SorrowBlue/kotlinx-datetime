@@ -9,6 +9,7 @@ buildscript {
 
 plugins {
     id("kotlinx.team.infra") version "0.1.0-dev-53"
+    kotlin("plugin.serialization") version "1.4.10"
 }
 
 project(":kotlinx-datetime") {
@@ -23,6 +24,7 @@ infra {
     }
     publishing {
         include(":kotlinx-datetime")
+        include(":kotlinx-datetime-serialization")
 
         bintray {
             organization = "kotlin"
