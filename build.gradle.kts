@@ -24,7 +24,7 @@ infra {
     }
     publishing {
         include(":kotlinx-datetime")
-        include(":kotlinx-datetime-serialization")
+        // include(":kotlinx-datetime-serialization")
 
         bintray {
             organization = "kotlin"
